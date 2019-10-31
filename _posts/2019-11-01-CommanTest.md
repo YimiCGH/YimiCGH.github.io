@@ -1,12 +1,7 @@
 ---
-layout: post
-title: "留言功能测试"
-date: 2019-11-01T03:08:50-04:00
-tags:
-  - test
+title: "留言测试"
+date: 2015-08-10T08:08:50-04:00
 ---
-
-真麻烦
 
 [MathJax](http://www.mathjax.org/) is a simple way of including Tex/LaTex/MathML based mathematics in HTML webpages. To get up and running you need to include the MathJax script in the header of your github pages page, and then write some maths. For LaTex, there are two delimiters you need to know about, one for block or displayed mathematics `\[ ... \]`, and the other for inline mathematics `\( ... \)`.
 
