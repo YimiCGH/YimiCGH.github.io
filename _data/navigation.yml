@@ -1,0 +1,16 @@
+# Sample site navigation bar links
+
+- title: 首页
+  url: /
+- title: 历史发布
+  url: /posts/
+- title: 归档分类
+  url: /categories/
+- title: 标签
+  url: /tags/
+#- title: Recipes
+#  url: /recipes/
+- title: 搜索
+  url: /search/
+# - title: External Page
+#   url: https://the-page.com/you-want-to-link-to.html
