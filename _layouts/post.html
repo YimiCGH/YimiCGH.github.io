@@ -5,10 +5,7 @@ layout: default
 <main id="main" class="main-content" aria-label="Content">
   <article class="h-entry">
     {% include page-image.html %}
-    <div class="page-wrapper">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-      <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-
+    <div class="page-wrapper">  
       <header class="page-header">
         {% assign title = page.title | markdownify | strip_html %}
         {% if page.link %}
