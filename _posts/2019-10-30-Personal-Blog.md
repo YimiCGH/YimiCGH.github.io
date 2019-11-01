@@ -121,7 +121,7 @@ jekyll确实非常便利，把所有的脏活都干了，我们只需要简单�
   <figcaption>3.设置_config.yml</figcaption>
 </figure>
 
-4. 再`_includes`文件夹下创建`gitalk.html`文件
+4 再`_includes`文件夹下创建`gitalk.html`文件
 
 ``` javascript
 <div id="gitalk-container"></div>
