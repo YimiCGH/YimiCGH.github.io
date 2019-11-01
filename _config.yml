@@ -40,13 +40,11 @@ disqus:
 # 评论功能
 comments:
     gitalk: true
-    client_id: b2d7238971fcb5dfd84c
-    client_secret: 87c1e996543e90304d8b80471c1936c8c13c350f
-    owner: 'YimiCGH'
-    repo: 'YimiCGH.github.io'
-    admin: 'YimiCGH'
-    distractionFreeMode: true
-
+    client_id: "b2d7238971fcb5dfd84c"
+    client_secret: "87c1e996543e90304d8b80471c1936c8c13c350f"
+    owner: "YimiCGH"
+    repo: "YimiCGH.github.io"
+    admin: "YimiCGH"
 # Liquid
 liquid:
   error_mode: strict
