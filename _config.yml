@@ -49,6 +49,11 @@ comments:
 liquid:
   error_mode: strict
 
+# Sidebar settings
+sidebar: true  #添加侧边栏
+sidebar-about-description: "努力变得更好吧"
+sidebar-avatar: /images/neko.jpg     #你的大头贴，请使用绝对地址.注意：名字区分大小写！后缀名也是
+
 # Build settings
 permalink: /:categories/:title/
 markdown: kramdown

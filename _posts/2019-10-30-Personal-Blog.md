@@ -10,7 +10,9 @@ tags:
 
 last_modified_at: 2019-10-31T22:26:59-05:00
 ---
-
+* 目录
+{:toc}
+---
 ## 个人博客搭建
 
 > 因为一直羡慕别人有一个自己的博客文章，心动不如行动，自己DIY一个，过程并不顺利，不过还是勉勉强强的弄出来了，下面记录一下搭建的过程以及遇到的坑。
@@ -38,10 +40,10 @@ jekyll确实非常便利，把所有的脏活都干了，我们只需要简单�
 #### 具体步骤
 
 ![left-aligned-image]({{ '/images/blog001/003.png' | absolute_url }}){: .align-left}
-执行 `ruby -v` 查看ruby是否安装成功，成功的话就会显示下面的版本提示
+执行 `ruby -v` 查看ruby是否安装成功，成功的话就会显示ruby的版本提示
 
 ![left-aligned-image]({{ '/images/blog001/004.png' | absolute_url }}){: .align-left}
-执行 `gem -v` 查看gem是否安装成功，成功的话就会显示下面的版本提示。gem 是用来安装各种工具包的
+执行 `gem -v` 查看gem是否安装成功，成功的话就会显示gem的版本提示。gem 是用来安装各种工具包的
 
 然后我们就可以运行 `gem install jekyll`来安装Jekyll了，等待一段时间后会出现安装成功提示
 ![image-center]({{ '/images/blog001/005.png' | absolute_url }}){: .align-center}
