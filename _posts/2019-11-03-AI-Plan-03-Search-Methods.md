@@ -16,6 +16,7 @@ last_modified_at: 2019-11-03T04:11:00-14:00
 ---
 > 名词说明
 **fringe** ：等待处理的节点列表，又称为 openlist ,即未探索的节点，相对的，有closelist
+
 ## Breadth First Seardh (广度优先搜索)
 
 最简单暴力点方法,遵循先进先出（FIFO）
