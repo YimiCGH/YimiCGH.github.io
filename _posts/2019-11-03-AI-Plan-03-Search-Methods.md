@@ -5,6 +5,8 @@ excerpt: "对比常见的搜索算法，贪婪优先搜索，Dijstra,A*"
 image:
   path: /images/blog003/ai-poster.jpg
   thumbnail: /images/blog003/ai-poster.jpg
+categories:
+      - 学习笔记
 tags:
   - Ai
   - 学习笔记
