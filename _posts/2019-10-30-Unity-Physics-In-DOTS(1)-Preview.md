@@ -13,8 +13,7 @@ image:
 ---
 
 # Unity Physics In DOTS (1) - Overview
-* 目录
-{:toc #markdown-toc}
+{% include toc %}
 ---
 ## 概述
 在Unity 2019的版本中，Unity 推出了新的物理系统，属于DOTS中的一员，是基于Unity的HPC#/Burst实现的无状态（Stateless）物理系统。

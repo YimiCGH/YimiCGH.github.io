@@ -10,8 +10,7 @@ tags:
 
 last_modified_at: 2019-10-31T22:26:59-05:00
 ---
-* 目录
-{:toc}
+{% include toc %}
 ---
 ## 个人博客搭建
 

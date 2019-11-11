@@ -12,19 +12,17 @@ tags:
   - 学习笔记
 last_modified_at: 2019-11-06T012:35:00-23:35
 ---
-* 目录
-{:toc #markdown-toc}
-
+{% include toc %}
 ---
 ## 经典规划
 - 任务：找出规划问题的解决方案
 - 规划问题由3部分组成
   - 初始状态
-    - 由一组原子组成（objects，relations）
+    - 由一组命题组成（描述有哪些对象，这些对象之间的关系，这些对象的属性）
   - 规划定义域 (plannig domain)
     - 实质上由一系列的operators组成(某个操作包含name , preconditions , effects)
     - 定义域其实上一个可重用的组件，不同的问题可能都需要类似的操作，只不过是初始状态和最终目标有所不同
-  - goal
+  - 目标状态
 - 解决方案（plan）
 
 ## 规划域 Planning Domain

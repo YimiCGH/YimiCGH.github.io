@@ -12,9 +12,7 @@ tags:
   - 学习笔记
 last_modified_at: 2019-11-06T00:35:00-06:00
 ---
-* 目录
-{:toc #markdown-toc}
-
+{% include toc %}
 ---
 ## 状态空间搜索
 前面介绍过各种各样的搜索算法（广度搜索，深度搜索，A*等等），那么怎么把它们应用到规划问题中呢？
@@ -51,7 +49,7 @@ last_modified_at: 2019-11-06T00:35:00-06:00
       - 当步数为m时，通过递归这些结果集得到最终结果集的合并。
 
 >例子
-> ![image-center]({{ '/images/blog008/002.png' | absolute_url }}){: .align-center}
+> ![image-center]({{ '/images/blog008/000.png' | absolute_url }}){: .align-center}
 >如图，已知一组 {s1,s3},已知SN为其中一个，求2步后，可能抵达哪些节点
 s1 一步可以抵达的点 = Γ<sup>1</sup>(s<sub>1</sub>) = {s<sub>2</sub>,s<sub>3</sub>}
 s1 两步可以抵达的点 = Γ( Γ<sup>1</sup>(s<sub>1</sub>)) = Γ({s<sub>2</sub>,s<sub>3</sub>}) = {s4,s5,s6}
@@ -87,3 +85,14 @@ function fwdSearch( O, s_i,g)
 ```
 这里和我们之前提到的广度搜索方法（ Breadth First Seardh ）差不多
 这里需要注意的是applicables.chooseOne()，这里我们需要使用一些技巧来进行回溯，即applicables这个东东，它是一个存储下一个操作目标的容器，或者我们自己使用其他技术实现的优先队列（如FIFO,Dijstra，启发式等等）
+
+## 优点与缺点
+
+优点
+- 合理性：不过使用哪一种辅助技巧实现applicables.chooseOne()来得到计划，此算法都可以保证该计划就是解决方案！
+- 完整性：当操作解决方案时，前向搜索将返回至少一种解决方案。
+
+缺点：
+- 前向搜索可能有非常大的分支数量，这些分支中的大部分都不可能抵达目标
+- 可能会浪费时间去尝试许多不相干的操作
+- 需要一个好的启发函数或者剪枝处理
