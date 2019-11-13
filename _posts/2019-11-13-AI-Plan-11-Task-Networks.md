@@ -161,14 +161,14 @@ Ground-TFD 算法(Total-Order Forward Decomposition，全序正向分解)
 - function Ground-TFD(s,<t<sub>1</sub>,...,t<sub>k</sub>>,O,M)
   - if k = 0 return <>
   - if t<sub>1</sub>.isPrimitive() then
-    - actions = `{(a,σ) | a = σ(t<sub>1</sub> and a applicable in s)}`
+    - actions = {(a,σ) `|` a = σ(t<sub>1</sub> and a applicable in s)}
     - if actions.isEmpty() then return failure
     - (a,σ) = actions.chooseOne()
     - plan ←  Ground-TFD(γ(s,a),σ(<t<sub>2</sub>,...,t<sub>k</sub>>) ,O,M)
     - if plan = failure then return failure
     - else renturn <*a*> · plan
   - else
-    - methods = `{(m,σ) | m is relevant for σ(t<sub>1</sub>)  and m is applicable in s }`
+    - methods = {(m,σ) `|` m is relevant for σ(t<sub>1</sub>)  and m is applicable in s }
     - if methods.isEmpty() then retun failure
     - (m,σ) = methods.chooseOne()
     - plan ← subtasks(m) · σ(<t<sub>2</sub>,...,t<sub>k</sub>>)
