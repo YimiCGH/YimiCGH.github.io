@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Ai Plan (11) Task Network'
-excerpt: "PSP 算法的改进版本"
+excerpt: "分层任务网络，STN ,也称HTN"
 image:
   path: /images/blog003/ai-poster.jpg
   thumbnail: /images/blog003/ai-poster.jpg
@@ -14,7 +14,7 @@ last_modified_at: 2019-11-13T01:00:00-06:00
 ---
 {% include toc %}
 ---
-
+前面我们了解了状态空间搜索和规划空间搜索两种方法，这一次，我们再来认识一种新的方法，分层任务网络，我们不在针对问题来寻找解决方案，而是通过任务来实现某个目标，因为实现目标的方法有许多中，所以，任务的实现方法也有也可以有许多种，根据条件的不同，我们可以选择不同的方式来完成任务，或者无法完成任务（条件全部不满足，没有合适的方法）。下面开始认识分层任务网络的一些相关概念。
 ## Task and Task Networks
 Task 以及 Task Networks 是 分层任务网络规划（Hierarchical task network planning）中处理的基本组件.
 我们从定义简单任务网络开始。
