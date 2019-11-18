@@ -87,7 +87,8 @@ a<sub>i</sub> = a<sub>i</sub> 表示行动名称与任务名称相同
     - 非实例的，t3是非实例任务
   - w2 = ({t<sub>1</sub>,t<sub>2</sub>},{(t<sub>1</sub>,t<sub>2</sub>)})
     - 全序的，实例的，基元的
-    - `π(w<sub>2</sub>)=<take(crame,loc1,c1,c2,p1),take(crame,loc1,c2,c3,p1)>`
+    - π(w<sub>2</sub>)=
+    <take(crame,loc1,c1,c2,p1),take(crame,loc1,c2,c3,p1)>
 
 ### 方法（Method）
 我们这次尝试把规划问题当作搜索问题，而Method描述如何改变任务网络的方式，它们用来完善计划，对应于状态空间中的状态转移。
