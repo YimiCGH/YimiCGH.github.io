@@ -44,7 +44,7 @@ Task 以及 Task Networks 是 分层任务网络规划（Hierarchical task netwo
 
   以上三种方法共同描述了通过层次分解如何把一个堆上的集装箱按照顺序转移到另一个托盘上。
 
-### Tasks
+### 任务（Tasks）
 - 任务符号表(task symbols)： T<sub>s</sub> = {t<sub>1</sub>,...,t<sub>n</sub>},一组符号集，用来标识任务的唯一名称
   - 操作名（operator names） ⊊ T<sub>s</sub> :基元任务（primitive tasks），操作的名称需要用任务符号表中的符号来命名
   - 非基元任务符号： T<sub>s</sub> - operator names，那些没有操作名与之对应的符号，成为非基元任务符号，如果有操作的名称与之对应，则称为基元任务符号
@@ -58,12 +58,13 @@ Task 以及 Task Networks 是 分层任务网络规划（Hierarchical task netwo
 
 **Simple Task Networks**
 一个简单任务网络w是有向不循环图 (U,E)
-- U = {t<sub>1</sub>,...,t<sub>n</sub>}：即U是有一组任务构成的节点集合
+- U = {t<sub>1</sub>,...,t<sub>n</sub>}：即U是由一组任务构成的节点集合
 - E 中的边是 U中的任务的偏序排列（可能不完整的）
 
 >如果U中所有任务都是实例的/基元的，那么任务网络w是 实例的/基元的；否则，w就是非实例的/非基元的，即只要有一个任务是非实例的，或者非基元的，我们就认为这个任务网络是非实例的，或非基元的
 
 **全序STNs**
+
 顺序的定义
 - 当存在一条路径从t<sub>u</sub>到t<sub>v</sub>时，表示在w=(U,E)中,t<sub>u</sub>‹ t<sub>v</sub>，即t<sub>u</sub>先于t<sub>v</sub>
 - 如果E 是 U 的全序排列，则 STN w 也是全序的，即
@@ -86,9 +87,9 @@ a<sub>i</sub> = a<sub>i</sub> 表示行动名称与任务名称相同
     - 非实例的，t3是非实例任务
   - w2 = ({t<sub>1</sub>,t<sub>2</sub>},{(t<sub>1</sub>,t<sub>2</sub>)})
     - 全序的，实例的，基元的
-    - π(w<sub>2</sub>) = <take(crame,loc1,c1,c2,p1),take(crame,loc1,c2,c3,p1)>
+    - `π(w<sub>2</sub>)=<take(crame,loc1,c1,c2,p1),take(crame,loc1,c2,c3,p1)>`
 
-### Method
+### 方法（Method）
 我们这次尝试把规划问题当作搜索问题，而Method描述如何改变任务网络的方式，它们用来完善计划，对应于状态空间中的状态转移。
 M<sub>s</sub> 是方法符号集。一个STN 方法有一个四元组表示 m = (name(m),task(m),precond(m),network(m))
 - name(m):方法名称
@@ -133,7 +134,7 @@ M<sub>s</sub> 是方法符号集。一个STN 方法有一个四元组表示 m = 
   - precond: -
   - subtasks: <move-stack(p<sub>o</sub>,p<sub>i</sub>),move-stack(p<sub>i</sub>,p<sub>d</sub>)>
 
-### 适用性与相关性
+### 适用性与相关性（Applicability and Relevance）
 - 方法实例m适用于状态s，如果满足以下条件的话
   - precond<sup>+</sup>(m) ⊆ s 且  precond<sup>-</sup>(m) ∩ s = {}
   - 即m的所有正向前提条件都包含在s中，所有的复兴前提条件都不在s中
@@ -154,9 +155,47 @@ M<sub>s</sub> 是方法符号集。一个STN 方法有一个四元组表示 m = 
   - m<sub>i</sub> 在s状态下适用
   - 在 σ = {q← p2} 时 ，m<sub>i</sub> 和 t 相关。即 当q = p2时，m<sub>i</sub> 和 t 相关
 
-## STN Planning
+### 分解（Decomposition）
+一个简单的分解例子
+![image-center]({{ '/images/blog013/003.png' | absolute_url }}){: .align-center}
 
-Ground-TFD 算法(Total-Order Forward Decomposition，全序正向分解)
+假设
+- 任务网络 w = (U,E)
+  - U = {t<sub>1</sub>,...,t<sub>n</sub>}：即U是由一组任务构成的节点集合
+  - E 是排列约束，E中保存的是U中的任务的偏序排列（可能不完整的）
+- t ∈ U , 且在在w中没有任何前驱节点，也就是说，t是一个根节点
+- m 是在某种替换σ下和t 在 network(m)=(U<sub>m</sub>,E<sub>m</sub>)中 相关
+
+则，当满足下面条件时，t 在 w 中，通过方法m 在使用替换 σ 得到的分解，是一个简单任务网络 δ(w,t,m,σ)
+- t 是对U中的该任务使用σ(U<sub>m</sub>) 进行实例化并且替换
+  - 如，U = <move-stack(p,d)> ,经过m = recursive-move(p0,d0,c0,x0) 分解，得到 U = <move-stack(p0,d0),move-stack(p0,d0)>,U 中的任务被实例化并替换掉了。
+- E中涉及到t的边 也被替换成抵达σ(U<sub>m</sub>) 中适当的节点的边
+  - 简单的理解是，把原先的节点间的顺序，修改为变换后的新的的节点间的顺序
+  - 如，原先是 <t1,t2,t3>,t1 被分解为<t4,t5,t6>,则原先的顺序也应该被替换成<t4,t5,t6,t2,t3>
+
+## STN Planning
+STN规划的定义域 d = (O,M)
+一个STN规划问题可以看做一个四元组 p = (s<sub>i</sub>,w<sub>i</sub>,O,M)
+- s<sub>i</sub> 是初始状态
+- w<sub>i</sub> 是当前任务网络
+- O 是定义域的操作集
+- M 是定义域的方法集
+
+### 解决方案的定义
+如果w<sub>i</sub>和定义域d 都是全序的话，那么p 是一个全序STN规划问题
+对于p= (s<sub>i</sub>,w<sub>i</sub>,O,M) 的解决方案π =<a<sub>1</sub>,...,a<sub>n</sub>>
+- 如果w<sub>i</sub> 为空，则解决方案也为空
+- 当 t （t ∈ w<sub>i</sub>）是一个基元任务,且没有前驱任务时
+  - 如果a<sub>1</sub> = t 在s<sub>i</sub>中可用
+  - 则，π' = <a<sub>2</sub>,...,a<sub>n</sub>> 是 p'= (γ(s<sub>i</sub>,a<sub>1</sub>),w<sub>i</sub>-{t} , O, M)
+  - 其实就是解决了某个任务，更新当前状态，把该任务从任务网络中移除，开始解决下一个任务
+- 当 t （t∈w<sub>i</sub>）是一个复合任务,且没有前驱任务时
+  - 如果方法m和t相关，即 σ(t) = task(m) 在 s<sub>i</sub>中可用
+  - 则π是 p' = (s<sub>i</sub>,δ(w<sub>i</sub>,t,m,σ),O,M)的解决方案
+  - 其实就是通过方法m替换了原先的任务网络
+
+### Ground-TFD 算法
+TFP (Total-Order Forward Decomposition，全序正向分解)
 伪代码：
 - function Ground-TFD(s,<t<sub>1</sub>,...,t<sub>k</sub>>,O,M)
   - if k = 0 return <>
