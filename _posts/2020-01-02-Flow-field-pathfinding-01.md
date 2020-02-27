@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '流场寻路算法-FLowField（01）'
+title: '流场寻路算法-FlowField（01）'
 categories:
       - 笔记
 tags:
@@ -72,7 +72,7 @@ HeatMap.prototype.GetNeighbor = function(_x,_y,_value){
   }
 }
 ```
-![image-center]({{ '/images/blog023/000.png' | absolute_url }}){: .align-center}
+![image-center]({{ '/images/blog023/00.png' | absolute_url }}){: .align-center}
 
 ### 向量图生成
 得到热度图后
@@ -83,7 +83,7 @@ HeatMap.prototype.GetNeighbor = function(_x,_y,_value){
 
 不过，我们可以进一步对此向量场进行优化，如，不允许其斜着穿过障碍。具体方法是在遍历当前点的8方向邻居时，过滤掉不可通行的，以及斜角方向时，该斜角上一个和下一个邻居。就可以得到如图所示效果
 
-![image-center]({{ '/images/blog023/001.png' | absolute_url }}){: .align-center}
+![image-center]({{ '/images/blog023/01.png' | absolute_url }}){: .align-center}
 
 仔细观察可以发现其实是有点缺陷的，当和目标点之间没有任何障碍时，正常情况下它应该直接指向目标点，代理应该直线移动过去比较自然。但是因为我们当前的向量场只支持正交直线以及45度角的直线，类似这种情况的斜线并不支持。《最高指挥官2》中使用视线检测附近是否有更好的路径来实现。
 
@@ -236,7 +236,7 @@ if(dot > 0){
 
 如图
 
-![image-center]({{ '/images/blog023/002.png' | absolute_url }}){: .align-center}
+![image-center]({{ '/images/blog023/02.png' | absolute_url }}){: .align-center}
 
 最终我们得到了两个力，一个是墙的反向推力，另一个是沿着墙的边缘的拉力.把这些力作用到单位上，可以得到不错的效果
 
